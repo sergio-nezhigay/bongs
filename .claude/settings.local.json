@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:bongs.ca)"
+      "WebFetch(domain:bongs.ca)",
+      "WebFetch(domain:sillysanta.de)"
     ],
     "deny": [],
     "ask": []
