@@ -38,18 +38,20 @@
   }
 
   .faq-collection__item {
-    border-bottom: 1px solid #e5e5e5;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 15px;
+    background: white;
   }
 
   .faq-collection__item:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
   }
 
   .faq-collection__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 24px;
+    padding: 20px 30px 20px 20px;
     cursor: pointer;
     background: white;
     transition: background 0.3s ease;
@@ -57,48 +59,49 @@
   }
 
   .faq-collection__header:hover {
-    background: #f9fafb;
+    background: #fafafa;
   }
 
   .faq-collection__question {
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    color: inherit;
+    color: #1a1a1a;
     margin: 0;
+    letter-spacing: 0.5px;
   }
 
   .faq-collection__icon {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-    font-size: 1.5rem;
-    font-weight: bold;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+    margin-left: 20px;
   }
 
   .faq-collection__item.active .faq-collection__icon {
-    transform: rotate(45deg);
+    transform: rotate(180deg);
   }
 
   .faq-collection__content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.6s ease;
   }
 
   .faq-collection__answer {
-    padding: 0 24px 20px 24px;
+    padding: 20px 20px 20px 20px;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: #666;
   }
 
   .faq-collection__item.active .faq-collection__content {
-    max-height: 500px;
+    max-height: 800px;
+  }
+
+  .faq-collection__item.active .faq-collection__header {
+    border-bottom: 1px solid #e5e5e5;
   }
 
   .faq-collection__answer p {
@@ -114,7 +117,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const headers = document.querySelectorAll('.faq-collection__header');
 
-    headers.forEach(header => {
+    headers.forEach((header) => {
       header.addEventListener('click', () => {
         const item = header.parentElement;
         item.classList.toggle('active');
@@ -136,7 +139,17 @@
         <div class="faq-collection__item" {{ block.shopify_attributes }}>
           <div class="faq-collection__header">
             <h3 class="faq-collection__question">{{ block.settings.question }}</h3>
-            <span class="faq-collection__icon">+</span>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              class="faq-collection__icon"
+              viewBox="0 0 28 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="m1.57 1.59 12.76 12.77L27.1 1.59"></path>
+            </svg>
           </div>
           <div class="faq-collection__content">
             <div class="faq-collection__answer">
