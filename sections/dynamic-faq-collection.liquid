@@ -38,83 +38,67 @@
   }
 
   .faq-collection__item {
-    margin-bottom: 15px;
-    border: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
   }
 
   .faq-collection__item:last-child {
-    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  .faq-collection__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    background: white;
+    transition: background 0.3s ease;
+    user-select: none;
+  }
+
+  .faq-collection__header:hover {
+    background: #f9fafb;
   }
 
   .faq-collection__question {
-    width: 100%;
-    text-align: left;
-    padding: 20px 30px 20px 20px;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    cursor: pointer;
-    position: relative;
-    list-style: none;
     color: inherit;
-    background: none;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .faq-collection__question::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-collection__question-text {
-    flex: 1;
-    padding-right: 30px;
-    max-width: 85%;
+    margin: 0;
   }
 
   .faq-collection__icon {
-    position: absolute;
-    right: 83px;
-    width: 16px;
-    height: 16px;
-    transition: transform 0.35s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: bold;
     flex-shrink: 0;
-    margin-left: 20px;
   }
 
-  .faq-collection__item[open] .faq-collection__icon {
-    transform: rotate(180deg);
+  .faq-collection__item.active .faq-collection__icon {
+    transform: rotate(45deg);
   }
 
-  .faq-collection__item[open] .faq-collection__question {
-    padding-bottom: 10px;
+  .faq-collection__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
   }
 
   .faq-collection__answer {
-    padding: 0 30px 0 20px;
+    padding: 0 24px 20px 24px;
     font-size: 15px;
     line-height: 1.6;
     color: #666;
-    overflow: hidden;
-    height: 0;
-    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .faq-collection__answer-inner {
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
-  }
-
-  .faq-collection__item[open] .faq-collection__answer {
-    padding-bottom: 20px;
-  }
-
-  .faq-collection__item[open] .faq-collection__answer-inner {
-    opacity: 1;
-    transform: translateY(0);
+  .faq-collection__item.active .faq-collection__content {
+    max-height: 500px;
   }
 
   .faq-collection__answer p {
@@ -128,39 +112,12 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const faqItems = document.querySelectorAll('.faq-collection__item');
+    const headers = document.querySelectorAll('.faq-collection__header');
 
-    faqItems.forEach((item) => {
-      const summary = item.querySelector('.faq-collection__question');
-      const answer = item.querySelector('.faq-collection__answer');
-      const inner = item.querySelector('.faq-collection__answer-inner');
-
-      summary.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        const isOpen = item.hasAttribute('open');
-
-        if (isOpen) {
-          // Closing animation
-          answer.style.height = answer.scrollHeight + 'px';
-          requestAnimationFrame(() => {
-            answer.style.height = '0px';
-          });
-
-          answer.addEventListener('transitionend', function onClose() {
-            answer.removeEventListener('transitionend', onClose);
-            item.removeAttribute('open');
-          }, { once: true });
-        } else {
-          // Opening animation
-          item.setAttribute('open', '');
-          const targetHeight = inner.scrollHeight;
-          answer.style.height = '0px';
-
-          requestAnimationFrame(() => {
-            answer.style.height = targetHeight + 'px';
-          });
-        }
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
       });
     });
   });
@@ -176,25 +133,17 @@
   <div class="faq-collection__items">
     {%- for block in section.blocks -%}
       {%- if block.type == 'faq_item' -%}
-        <details class="faq-collection__item" {{ block.shopify_attributes }}>
-          <summary class="faq-collection__question">
-            <span class="faq-collection__question-text">{{ block.settings.question }}</span>
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              role="presentation"
-              class="faq-collection__icon icon icon--wide icon-chevron-down"
-              viewBox="0 0 28 16"
-            >
-              <path d="m1.57 1.59 12.76 12.77L27.1 1.59" stroke-width="2" stroke="currentColor" fill="none"></path>
-            </svg>
-          </summary>
-          <div class="faq-collection__answer">
-            <div class="faq-collection__answer-inner">
+        <div class="faq-collection__item" {{ block.shopify_attributes }}>
+          <div class="faq-collection__header">
+            <h3 class="faq-collection__question">{{ block.settings.question }}</h3>
+            <span class="faq-collection__icon">+</span>
+          </div>
+          <div class="faq-collection__content">
+            <div class="faq-collection__answer">
               {{ block.settings.answer }}
             </div>
           </div>
-        </details>
+        </div>
       {%- endif -%}
     {%- endfor -%}
   </div>
