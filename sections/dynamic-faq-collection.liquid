@@ -75,7 +75,7 @@
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     margin-left: 20px;
   }
 
@@ -86,7 +86,7 @@
   .faq-collection__content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.6s ease;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .faq-collection__answer {
@@ -97,7 +97,7 @@
   }
 
   .faq-collection__item.active .faq-collection__content {
-    max-height: 800px;
+    max-height: 300px;
   }
 
   .faq-collection__item.active .faq-collection__header {
