@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:bongs.ca)",
-      "WebFetch(domain:sillysanta.de)"
+      "WebFetch(domain:sillysanta.de)",
+      "Bash(claude mcp add playwright:*)"
     ],
     "deny": [],
     "ask": []

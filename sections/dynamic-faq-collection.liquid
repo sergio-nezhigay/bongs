@@ -1,0 +1,226 @@
+{%- liquid
+  assign section_heading = section.settings.heading
+  assign section_width = section.settings.section_width
+-%}
+
+<style>
+  .faq-collection {
+    padding: 50px 0;
+  }
+
+  .faq-collection--regular {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-collection--wide {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-collection--full-width {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-collection__heading {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+
+  .faq-collection__items {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .faq-collection__item {
+    margin-bottom: 15px;
+    border: 1px solid #e5e5e5;
+  }
+
+  .faq-collection__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .faq-collection__question {
+    width: 100%;
+    text-align: left;
+    padding: 20px 30px 20px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    color: inherit;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-collection__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-collection__question-text {
+    flex: 1;
+    padding-right: 30px;
+  }
+
+  .faq-collection__icon {
+    position: absolute;
+    right: 83px;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .faq-collection__item[open] .faq-collection__icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-collection__item[open] .faq-collection__question {
+    padding-bottom: 10px;
+  }
+
+  .faq-collection__answer {
+    padding: 0 30px 20px 20px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .faq-collection__answer p {
+    margin: 0 0 15px 0;
+  }
+
+  .faq-collection__answer p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<section class="faq-collection faq-collection--{{ section_width }}">
+  {%- if section_heading != blank -%}
+    <h2 class="faq-collection__heading">
+      {{ section_heading }}
+    </h2>
+  {%- endif -%}
+
+  <div class="faq-collection__items">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq_item' -%}
+        <details class="faq-collection__item" {{ block.shopify_attributes }}>
+          <summary class="faq-collection__question">
+            <span class="faq-collection__question-text">{{ block.settings.question }}</span>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              class="faq-collection__icon icon icon--wide icon-chevron-down"
+              viewBox="0 0 28 16"
+            >
+              <path d="m1.57 1.59 12.76 12.77L27.1 1.59" stroke-width="2" stroke="currentColor" fill="none"></path>
+            </svg>
+          </summary>
+          <div class="faq-collection__answer">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Collection",
+  "class": "shopify-section--faq-collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FAQ"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "regular"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frequently asked question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Use this text to provide answers for your most commonly asked questions.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Collection",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "WELCHE LUSTIGE WEIHNACHTSPULLOVER SIND DIESES JAHR IM TREND?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "WELCHE CHRISTMAS SWEATERS EIGNEN SICH FÜR EINE WEIHNACHTSFEIER?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "GIBT ES EIN GROSSES SORTIMENT AN WEIHNACHTSPULLOVERN FÜR DAMEN?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -57,55 +57,55 @@
         "custom_liquid": "{{ collection.description }}"
       }
     },
-    "dynamic_faq_yhMqgt": {
-      "type": "dynamic-faq",
+    "dynamic_faq_collection_new": {
+      "type": "dynamic-faq-collection",
       "blocks": {
-        "category_Nhp96b": {
-          "type": "category",
+        "faq_item_1": {
+          "type": "faq_item",
           "settings": {
-            "heading": "Category",
-            "show_category_card": true
+            "question": "WELCHE LUSTIGE WEIHNACHTSPULLOVER SIND DIESES JAHR IM TREND?",
+            "answer": "<p>Add your answer here about trendy Christmas sweaters.</p>"
           }
         },
-        "question_AFzKNz": {
-          "type": "question",
+        "faq_item_2": {
+          "type": "faq_item",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
-            "icon": "none"
+            "question": "WELCHE CHRISTMAS SWEATERS EIGNEN SICH FÜR EINE WEIHNACHTSFEIER?",
+            "answer": "<p>Add your answer here about Christmas sweaters for parties.</p>"
           }
         },
-        "question_mYtW7x": {
-          "type": "question",
+        "faq_item_3": {
+          "type": "faq_item",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
-            "icon": "none"
+            "question": "GIBT ES EIN GROSSES SORTIMENT AN WEIHNACHTSPULLOVERN FÜR DAMEN?",
+            "answer": "<p>Add your answer here about women's Christmas sweater selection.</p>"
           }
         },
-        "question_kURrPJ": {
-          "type": "question",
+        "faq_item_4": {
+          "type": "faq_item",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
-            "icon": "none"
+            "question": "WELCHE VORTEILE BIETET EIN LÄSSIGER SWEATER FÜR WEIHNACHTEN?",
+            "answer": "<p>Add your answer here about casual Christmas sweater benefits.</p>"
+          }
+        },
+        "faq_item_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "WARUM SIND CHRISTMAS SWEATSHIRTS SO BELIEBT?",
+            "answer": "<p>Add your answer here about why Christmas sweatshirts are popular.</p>"
           }
         }
       },
       "block_order": [
-        "category_Nhp96b",
-        "question_AFzKNz",
-        "question_mYtW7x",
-        "question_kURrPJ"
+        "faq_item_1",
+        "faq_item_2",
+        "faq_item_3",
+        "faq_item_4",
+        "faq_item_5"
       ],
-      "name": "t:sections.faq.presets.name",
       "settings": {
-        "section_width": "regular",
         "heading": "FAQ",
-        "enable_category_cards": false,
-        "category_card_image_crop": "original",
-        "category_heading_size": "medium",
-        "icon_color": "rgba(0,0,0,0)"
+        "section_width": "regular"
       }
     }
   },
@@ -113,6 +113,6 @@
     "main",
     "static-recently-viewed",
     "dynamic_custom_liquid_PYXHNV",
-    "dynamic_faq_yhMqgt"
+    "dynamic_faq_collection_new"
   ]
 }
