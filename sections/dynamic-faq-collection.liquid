@@ -84,30 +84,37 @@
     margin-left: 20px;
   }
 
-  .faq-collection__item[open] .faq-collection__icon,
-  .faq-collection__item.is-open .faq-collection__icon {
+  .faq-collection__item[open] .faq-collection__icon {
     transform: rotate(180deg);
   }
 
-  .faq-collection__item[open] .faq-collection__question,
-  .faq-collection__item.is-open .faq-collection__question {
+  .faq-collection__item[open] .faq-collection__question {
     padding-bottom: 10px;
   }
 
   .faq-collection__answer {
-    padding: 0 30px 20px 20px;
+    padding: 0 30px 0 20px;
     font-size: 15px;
     line-height: 1.6;
     color: #666;
     overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .faq-collection__item.is-open .faq-collection__answer {
-    max-height: 1000px;
+  .faq-collection__answer-inner {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+  }
+
+  .faq-collection__item[open] .faq-collection__answer {
+    padding-bottom: 20px;
+  }
+
+  .faq-collection__item[open] .faq-collection__answer-inner {
     opacity: 1;
+    transform: translateY(0);
   }
 
   .faq-collection__answer p {
@@ -125,24 +132,34 @@
 
     faqItems.forEach((item) => {
       const summary = item.querySelector('.faq-collection__question');
+      const answer = item.querySelector('.faq-collection__answer');
+      const inner = item.querySelector('.faq-collection__answer-inner');
 
       summary.addEventListener('click', function (e) {
+        e.preventDefault();
+
         const isOpen = item.hasAttribute('open');
 
-        if (!isOpen) {
-          e.preventDefault();
+        if (isOpen) {
+          // Closing animation
+          answer.style.height = answer.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            answer.style.height = '0px';
+          });
+
+          answer.addEventListener('transitionend', function onClose() {
+            answer.removeEventListener('transitionend', onClose);
+            item.removeAttribute('open');
+          }, { once: true });
+        } else {
+          // Opening animation
           item.setAttribute('open', '');
+          const targetHeight = inner.scrollHeight;
+          answer.style.height = '0px';
 
           requestAnimationFrame(() => {
-            item.classList.add('is-open');
+            answer.style.height = targetHeight + 'px';
           });
-        } else {
-          e.preventDefault();
-          item.classList.remove('is-open');
-
-          setTimeout(() => {
-            item.removeAttribute('open');
-          }, 400);
         }
       });
     });
@@ -173,7 +190,9 @@
             </svg>
           </summary>
           <div class="faq-collection__answer">
-            {{ block.settings.answer }}
+            <div class="faq-collection__answer-inner">
+              {{ block.settings.answer }}
+            </div>
           </div>
         </details>
       {%- endif -%}

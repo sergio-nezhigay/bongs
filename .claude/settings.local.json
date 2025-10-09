@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:bongs.ca)",
       "WebFetch(domain:sillysanta.de)",
-      "Bash(claude mcp add playwright:*)"
+      "Bash(claude mcp add playwright:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []
