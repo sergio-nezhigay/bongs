@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pxs_image_with_text_overlay_UkqUwz": {
+      "type": "pxs-image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.presets.name",
+      "settings": {
+        "section_height": "medium",
+        "title": "Image with text overlay",
+        "text": "<p>Say a bit about your brand, a specific product, or promotion.</p>",
+        "content_position": "center-center",
+        "color": "#ffffff",
+        "overlay_background": "#000000",
+        "overlay_opacity": 50,
+        "link": "",
+        "button_text": "Button"
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {}
+    },
+    "dynamic_faq_T4JJwd": {
+      "type": "dynamic-faq",
+      "blocks": {
+        "category_mGgxjr": {
+          "type": "category",
+          "settings": {
+            "heading": "Category",
+            "show_category_card": true
+          }
+        },
+        "question_zMiH4e": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
+            "icon": "none"
+          }
+        },
+        "question_9bmypQ": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
+            "icon": "none"
+          }
+        },
+        "question_R7bPX4": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "<p>Use this text to provide answers for your most commonly asked questions.</p>",
+            "icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "category_mGgxjr",
+        "question_zMiH4e",
+        "question_9bmypQ",
+        "question_R7bPX4"
+      ],
+      "name": "t:sections.faq.presets.name",
+      "settings": {
+        "section_width": "regular",
+        "heading": "FAQ",
+        "enable_category_cards": false,
+        "category_card_image_crop": "original",
+        "category_heading_size": "medium",
+        "icon_color": "rgba(0,0,0,0)"
+      }
+    },
+    "dynamic_highlights_banner_7WaeLj": {
+      "type": "dynamic-highlights-banner",
+      "blocks": {
+        "highlight_VHr7kz": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery",
+            "title": "Free Shipping",
+            "text": "<p>When you spend $100+</p>",
+            "link": ""
+          }
+        },
+        "highlight_EW6QtG": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-cell-phone",
+            "title": "Give Us A Call",
+            "text": "<p>+1 (201) 555-5555</p>",
+            "link": ""
+          }
+        },
+        "highlight_9fVmYj": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-chat-alternate",
+            "title": "Chat With Us",
+            "text": "<p>We offer 24-hour chat support</p>",
+            "link": ""
+          }
+        },
+        "highlight_JRtLym": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-pin",
+            "title": "Locations",
+            "text": "<p>Find a store near you</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight_VHr7kz",
+        "highlight_EW6QtG",
+        "highlight_9fVmYj",
+        "highlight_JRtLym"
+      ],
+      "name": "t:sections.highlights_banner.presets.highlights_banner.name",
+      "settings": {
+        "section_spacing": false,
+        "section_width": "full-width",
+        "icon_layout": "left",
+        "color": "#4d4d4d",
+        "icon_color": "#4d4d4d",
+        "background_color": "#f8f8f8",
+        "mobile_layout": "slider"
+      }
+    }
+  },
+  "order": [
+    "pxs_image_with_text_overlay_UkqUwz",
+    "main",
+    "dynamic_faq_T4JJwd",
+    "dynamic_highlights_banner_7WaeLj"
+  ]
+}

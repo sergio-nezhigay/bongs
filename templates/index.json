@@ -1,0 +1,613 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dynamic_slideshow": {
+      "type": "dynamic-slideshow",
+      "blocks": {
+        "slide-4": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify://shop_images/BC_hero_banner_bongs.ca_1800x1000_4083a3a0-90f4-4bd7-baec-88861517f9b3.png",
+            "title": "Bongs Canada",
+            "text": "Largest selection of Bongs, Build A Bong, Dab Rigs, Bubblers, Pipes, Ash Catcher, Bong Bowl, Grinders, Vaporizers, Papers, and Bong Accessories.",
+            "color": "#ffffff",
+            "link": "shopify://pages/about-us",
+            "text_alignment": "right",
+            "button_one_label": "",
+            "button_one_link": "",
+            "button_one_style": "primary",
+            "button_two_label": "",
+            "button_two_link": "",
+            "button_two_style": "secondary",
+            "show_overlay": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 33
+          }
+        }
+      },
+      "block_order": [
+        "slide-4"
+      ],
+      "settings": {
+        "enable_autoplay": true,
+        "autoplay_duration": 9,
+        "slideshow_width": "full",
+        "slideshow_height": "medium",
+        "slideshow_height_mobile": "x-large",
+        "slideshow_text_below_image": false
+      }
+    },
+    "dynamic_highlights_banner": {
+      "type": "dynamic-highlights-banner",
+      "blocks": {
+        "highlight-1": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery",
+            "title": "Free Shipping",
+            "text": "<p>When You Spend Over $99</p>",
+            "link": ""
+          }
+        },
+        "highlight-2": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery-package",
+            "title": "Discrete Packaging",
+            "text": "<p>Safely and Securely Packaged</p>",
+            "link": ""
+          }
+        },
+        "highlight-3": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-chat-alternate",
+            "title": "Chat With Us",
+            "text": "<p>Live Chat Support</p>",
+            "link": ""
+          }
+        },
+        "highlight-4": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-pin",
+            "title": "Locations",
+            "text": "<p>Canada</p><p>United States</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight-1",
+        "highlight-2",
+        "highlight-3",
+        "highlight-4"
+      ],
+      "settings": {
+        "section_spacing": false,
+        "section_width": "content-width",
+        "icon_layout": "center",
+        "color": "#1d1d1d",
+        "icon_color": "#fca311",
+        "background_color": "#ffffff",
+        "mobile_layout": "grid"
+      }
+    },
+    "dynamic_collection_list": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "newest-arrivals",
+            "title": "New Arrivals"
+          }
+        },
+        "collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "title": ""
+          }
+        },
+        "collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "clearance-sale",
+            "title": ""
+          }
+        },
+        "collection-4": {
+          "type": "collection",
+          "settings": {
+            "collection": "beaker-bong",
+            "title": ""
+          }
+        },
+        "collection-5": {
+          "type": "collection",
+          "settings": {
+            "collection": "straight-tube-bong",
+            "title": "Straight Bong"
+          }
+        },
+        "collection_g7tKR9": {
+          "type": "collection",
+          "settings": {
+            "collection": "mini-bongs",
+            "title": "Mini Bong"
+          }
+        },
+        "collection-6": {
+          "type": "collection",
+          "settings": {
+            "collection": "build-a-bong",
+            "title": ""
+          }
+        },
+        "collection_4ciy4r": {
+          "type": "collection",
+          "settings": {
+            "collection": "dab-rig",
+            "title": ""
+          }
+        },
+        "collection_qpgqCy": {
+          "type": "collection",
+          "settings": {
+            "collection": "bubbler",
+            "image": "shopify://shop_images/Milk_Purple_-_Holey_Bubble_Bubbler_-_Mint_Glass_-_Bongs_Canada.jpg",
+            "title": "Bubbler"
+          }
+        },
+        "collection_dMWX9m": {
+          "type": "collection",
+          "settings": {
+            "collection": "bong-accessories",
+            "title": ""
+          }
+        },
+        "collection_baH3y7": {
+          "type": "collection",
+          "settings": {
+            "collection": "ashcatcher",
+            "title": ""
+          }
+        },
+        "collection_ECTURp": {
+          "type": "collection",
+          "settings": {
+            "collection": "bong-bowl",
+            "title": ""
+          }
+        },
+        "collection_BHUW6X": {
+          "type": "collection",
+          "settings": {
+            "collection": "downstems",
+            "image": "shopify://shop_images/Green_-_5_Straight_Downstem.webp",
+            "title": ""
+          }
+        },
+        "collection_KHp8at": {
+          "type": "collection",
+          "settings": {
+            "collection": "pipes",
+            "image": "shopify://shop_images/tyson-2.0_-_4.5_tyson_glove_hand_pipe_-_red_-_Bongs_Canada.webp",
+            "title": ""
+          }
+        },
+        "collection_KzbgM8": {
+          "type": "collection",
+          "settings": {
+            "collection": "bong-cleaner",
+            "title": ""
+          }
+        },
+        "collection_tn8xy7": {
+          "type": "collection",
+          "settings": {
+            "collection": "grinder",
+            "title": ""
+          }
+        },
+        "collection_3zkyVA": {
+          "type": "collection",
+          "settings": {
+            "collection": "vaporizer",
+            "title": ""
+          }
+        },
+        "collection_pdLg4r": {
+          "type": "collection",
+          "settings": {
+            "collection": "rolling-papers",
+            "title": ""
+          }
+        },
+        "collection_RND8Vf": {
+          "type": "collection",
+          "settings": {
+            "collection": "incense",
+            "title": ""
+          }
+        },
+        "collection_8WhAaq": {
+          "type": "collection",
+          "settings": {
+            "collection": "torch",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection-1",
+        "collection-2",
+        "collection-3",
+        "collection-4",
+        "collection-5",
+        "collection_g7tKR9",
+        "collection-6",
+        "collection_4ciy4r",
+        "collection_qpgqCy",
+        "collection_dMWX9m",
+        "collection_baH3y7",
+        "collection_ECTURp",
+        "collection_BHUW6X",
+        "collection_KHp8at",
+        "collection_KzbgM8",
+        "collection_tn8xy7",
+        "collection_3zkyVA",
+        "collection_pdLg4r",
+        "collection_RND8Vf",
+        "collection_8WhAaq"
+      ],
+      "settings": {
+        "title": "Canada's Best Online Headshop | Bongs, Build A Bong and Dab Rigs",
+        "thumbnail_columns_desktop": 6,
+        "thumbnail_columns_mobile": 3,
+        "image-crop": "original",
+        "cta_label": "",
+        "cta_link": "",
+        "cta_button_style": "primary"
+      }
+    },
+    "dynamic_featured_collection": {
+      "type": "dynamic-featured-collection",
+      "settings": {
+        "title": "Bongs Canada Best Sellers",
+        "layout": "grid",
+        "mobile_layout": "grid",
+        "collection": "best-sellers",
+        "product_count": 12,
+        "cta_label": "",
+        "cta_button_style": "secondary"
+      }
+    },
+    "dynamic_collection_list_WM9mAt": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "collection_CTRUCP": {
+          "type": "collection",
+          "settings": {
+            "collection": "hoss-glass",
+            "title": "Hoss Glass"
+          }
+        },
+        "collection_fFdcpj": {
+          "type": "collection",
+          "settings": {
+            "collection": "cheech-glass",
+            "title": "Cheech"
+          }
+        },
+        "collection_cAqKKT": {
+          "type": "collection",
+          "settings": {
+            "collection": "mint-glass",
+            "image": "shopify://shop_images/18-mint-two-tone-beaker-bong-5mmsimplemint-glass-312578.jpg",
+            "title": "Mint Glass"
+          }
+        },
+        "collection_XzpX3H": {
+          "type": "collection",
+          "settings": {
+            "collection": "wacky-tabacky-glass",
+            "title": "Wacky Tabacky"
+          }
+        },
+        "collection_E3Ug8G": {
+          "type": "collection",
+          "settings": {
+            "collection": "preemo-glass",
+            "title": "Preemo"
+          }
+        },
+        "collection_zDg4QM": {
+          "type": "collection",
+          "settings": {
+            "collection": "nice-glass",
+            "title": "Nice Glass"
+          }
+        },
+        "collection_WBnpRy": {
+          "type": "collection",
+          "settings": {
+            "collection": "og-original-glass",
+            "title": "OG Original"
+          }
+        },
+        "collection_8Jdzcz": {
+          "type": "collection",
+          "settings": {
+            "collection": "castle-glassworks",
+            "title": "Castle Glassworks"
+          }
+        },
+        "collection_treq4E": {
+          "type": "collection",
+          "settings": {
+            "collection": "hemper-glass",
+            "title": "Hemper"
+          }
+        },
+        "collection_k8anWe": {
+          "type": "collection",
+          "settings": {
+            "collection": "weneed",
+            "title": "WENEED"
+          }
+        },
+        "collection_W4ikRf": {
+          "type": "collection",
+          "settings": {
+            "collection": "cookies-glass",
+            "title": "Cookies"
+          }
+        },
+        "collection_9rrTC3": {
+          "type": "collection",
+          "settings": {
+            "collection": "medicali-glass",
+            "title": ""
+          }
+        },
+        "collection_zXqEBL": {
+          "type": "collection",
+          "settings": {
+            "collection": "santa-cruz-shredder",
+            "title": ""
+          }
+        },
+        "collection_mYDDjY": {
+          "type": "collection",
+          "settings": {
+            "collection": "g-pen",
+            "image": "shopify://shop_images/g-pen-micro-vaporizerg-pen-202740.webp",
+            "title": ""
+          }
+        },
+        "collection_UcEcAQ": {
+          "type": "collection",
+          "settings": {
+            "collection": "nova",
+            "image": "shopify://shop_images/Jet_Black-Nova_Waxbox_Vaporizer_Bongs_Canada.webp",
+            "title": ""
+          }
+        },
+        "collection_RqeM8P": {
+          "type": "collection",
+          "settings": {
+            "collection": "dr-dabber",
+            "title": ""
+          }
+        },
+        "collection_BTRE4r": {
+          "type": "collection",
+          "settings": {
+            "collection": "pax",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_CTRUCP",
+        "collection_fFdcpj",
+        "collection_cAqKKT",
+        "collection_XzpX3H",
+        "collection_E3Ug8G",
+        "collection_zDg4QM",
+        "collection_WBnpRy",
+        "collection_8Jdzcz",
+        "collection_treq4E",
+        "collection_k8anWe",
+        "collection_W4ikRf",
+        "collection_9rrTC3",
+        "collection_zXqEBL",
+        "collection_mYDDjY",
+        "collection_UcEcAQ",
+        "collection_RqeM8P",
+        "collection_BTRE4r"
+      ],
+      "name": "t:sections.collection_list.presets.collection_list.name",
+      "settings": {
+        "title": "Bongs Canada Brands",
+        "thumbnail_columns_desktop": 6,
+        "thumbnail_columns_mobile": 3,
+        "image-crop": "original",
+        "cta_label": "",
+        "cta_link": "",
+        "cta_button_style": "primary"
+      }
+    },
+    "dynamic_featured_collection-2": {
+      "type": "dynamic-featured-collection",
+      "settings": {
+        "title": "Bongs Canada Newest Arrivals",
+        "layout": "grid",
+        "mobile_layout": "grid",
+        "collection": "newest-arrivals",
+        "product_count": 12,
+        "cta_label": "VIEW ALL NEW",
+        "cta_button_style": "primary"
+      }
+    },
+    "1755530396fa37e136": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_card_carousel_section_hTxLDB": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-card-carousel-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "maxWidth": 1100,
+            "borderRadius": 8,
+            "itemsPerView": 5,
+            "mobileItemsPerView": 3,
+            "maxNumberOfCharacters": 100,
+            "imageRatio": "1.25",
+            "reviewerNameColor": "#000000",
+            "textColor": "#000000",
+            "itemBackgroundColor": "#ffffff",
+            "starsColor": "",
+            "starsBackgroundColor": "#ffffff",
+            "arrows_backgroundColor": "#ffffff",
+            "arrows_iconColor": "#9a9a9a",
+            "shadow": "offset-dark",
+            "border_active": false,
+            "border_width": 2,
+            "border_color": "#000000",
+            "productIds": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_card_carousel_section_hTxLDB"
+      ],
+      "settings": {
+        "include_padding": true
+      }
+    },
+    "dynamic_featured_collection_xeTgRD": {
+      "type": "dynamic-featured-collection",
+      "name": "t:sections.featured_collection.presets.featured_collection.name",
+      "settings": {
+        "title": "Bongs Canada Clearance Sale",
+        "layout": "grid",
+        "mobile_layout": "grid",
+        "collection": "clearance-sale",
+        "product_count": 8,
+        "cta_label": "VIEW ALL SALE",
+        "cta_button_style": "primary"
+      }
+    },
+    "dynamic_featured_product": {
+      "type": "dynamic-featured-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "view-product-link": {
+          "type": "view-product-link",
+          "settings": {
+            "text": "View full details"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "view-product-link"
+      ],
+      "settings": {
+        "product": "10-cheech-panda-bong-w-ash-catcher",
+        "gallery_aspect_ratio": "short",
+        "gallery_image_crop": false,
+        "gallery_thumbnail_position": "left",
+        "gallery_video_autoplay": false,
+        "gallery_video_looping": true,
+        "gallery_hover_zoom": "replace"
+      }
+    },
+    "dynamic_promo_grid_hcbpVg": {
+      "type": "dynamic-promo-grid",
+      "blocks": {
+        "promotion_YbX4fq": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Hero_Banner_BC_bong_shop_1800x1000_3e5e3f1f-07c7-4fd5-a00a-b27d5b33ed9e.png",
+            "title": "About Us",
+            "text": "Bongs Canada is a family run business established in 2012.",
+            "color": "#ffffff",
+            "block_link": "shopify://pages/about-us",
+            "button_text": "",
+            "button_style": "primary",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 46
+          }
+        },
+        "promotion_iaNX7t": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/BC_Hero_Banner_Canada_Post_1800x1000_9f838e43-a5c4-4e48-9dbe-ffcfcd534b32.png",
+            "title": "Free Shipping Over $99",
+            "text": "All items are securely and discretely packaged.",
+            "color": "#ffffff",
+            "block_link": "",
+            "button_text": "",
+            "button_style": "primary",
+            "show_overlay": true,
+            "background": "#000000",
+            "opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "promotion_YbX4fq",
+        "promotion_iaNX7t"
+      ],
+      "name": "t:sections.grid.presets.grid.name",
+      "settings": {
+        "title": "",
+        "section_height": "small",
+        "section_columns": 2,
+        "text_alignment": "top-left"
+      }
+    },
+    "dynamic_blog_posts": {
+      "type": "dynamic-blog-posts",
+      "settings": {
+        "title": "Blogs",
+        "blog": "news",
+        "show_date": true,
+        "show_author": false,
+        "show_excerpt": true
+      }
+    }
+  },
+  "order": [
+    "dynamic_slideshow",
+    "dynamic_highlights_banner",
+    "dynamic_collection_list",
+    "dynamic_featured_collection",
+    "dynamic_collection_list_WM9mAt",
+    "dynamic_featured_collection-2",
+    "1755530396fa37e136",
+    "dynamic_featured_collection_xeTgRD",
+    "dynamic_featured_product",
+    "dynamic_promo_grid_hcbpVg",
+    "dynamic_blog_posts"
+  ]
+}

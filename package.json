@@ -1,0 +1,15 @@
+{
+  "name": "bongs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify theme dev --store=bongs-ca.myshopify.com --theme 148623130813",
+    "push": "shopify theme push --store=bongs-ca.myshopify.com --theme 148623130813",
+    "pull": "shopify theme pull --store=bongs-ca.myshopify.com --theme 148623130813"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,195 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "pxs_image_with_text_overlay_anGzAE": {
+      "type": "pxs-image-with-text-overlay",
+      "name": "t:sections.image_with_text_overlay.presets.name",
+      "settings": {
+        "section_height": "medium",
+        "image": "shopify://shop_images/Hero_Banner_BC_bong_shop_1800x1000_3e5e3f1f-07c7-4fd5-a00a-b27d5b33ed9e.png",
+        "title": "Bongs Canada",
+        "text": "<p>Largest selection of Bong, Dab Rig, Bong Bowl, Ash Catcher, Pipe, Bong Cleaner, Rolling Paper and Smoking Accessories</p>",
+        "content_position": "center-center",
+        "color": "#ffffff",
+        "overlay_background": "#000000",
+        "overlay_opacity": 50,
+        "link": "shopify://collections/all-items",
+        "button_text": "Shop All"
+      }
+    },
+    "dynamic_highlights_banner_cqFzWF": {
+      "type": "dynamic-highlights-banner",
+      "blocks": {
+        "highlight_BU6ATp": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery",
+            "title": "Free Shipping",
+            "text": "<p>When You Spend Over $99</p>",
+            "link": ""
+          }
+        },
+        "highlight_fwxJcp": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-delivery-package",
+            "title": "Discrete Packaging",
+            "text": "<p>Safely And Securely Packaged</p>",
+            "link": ""
+          }
+        },
+        "highlight_AhTpmG": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-chat-alternate",
+            "title": "Chat With Us",
+            "text": "<p>Live Chat Support</p>",
+            "link": ""
+          }
+        },
+        "highlight_djdCW4": {
+          "type": "highlight",
+          "settings": {
+            "icon": "icon-pin",
+            "title": "Locations",
+            "text": "<p>Canada</p><p>United States</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight_BU6ATp",
+        "highlight_fwxJcp",
+        "highlight_AhTpmG",
+        "highlight_djdCW4"
+      ],
+      "name": "t:sections.highlights_banner.presets.highlights_banner.name",
+      "settings": {
+        "section_spacing": false,
+        "section_width": "content-width",
+        "icon_layout": "center",
+        "color": "#4d4d4d",
+        "icon_color": "#fca311",
+        "background_color": "#ffffff",
+        "mobile_layout": "grid"
+      }
+    },
+    "dynamic_collection_list_YA3FG8": {
+      "type": "dynamic-collection-list",
+      "blocks": {
+        "collection_LC9cRc": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "title": ""
+          }
+        },
+        "collection_nMnmng": {
+          "type": "collection",
+          "settings": {
+            "collection": "newest-arrivals",
+            "title": ""
+          }
+        },
+        "collection_jP3PJw": {
+          "type": "collection",
+          "settings": {
+            "collection": "clearance-sale",
+            "title": ""
+          }
+        },
+        "collection_rH4gMB": {
+          "type": "collection",
+          "settings": {
+            "collection": "bongs",
+            "title": ""
+          }
+        },
+        "collection_jXTccd": {
+          "type": "collection",
+          "settings": {
+            "collection": "dab-rig",
+            "title": ""
+          }
+        },
+        "collection_jBt4eH": {
+          "type": "collection",
+          "settings": {
+            "collection": "vaporizer",
+            "image": "shopify://shop_images/Periwinkle_-_PAX_Plus_Dry_Herb_Vaporizer_Complete_Kit.webp",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_LC9cRc",
+        "collection_nMnmng",
+        "collection_jP3PJw",
+        "collection_rH4gMB",
+        "collection_jXTccd",
+        "collection_jBt4eH"
+      ],
+      "name": "t:sections.collection_list.presets.collection_list.name",
+      "settings": {
+        "title": "Bongs Canada Collections",
+        "thumbnail_columns_desktop": 6,
+        "thumbnail_columns_mobile": 3,
+        "image-crop": "original",
+        "cta_label": "",
+        "cta_link": "",
+        "cta_button_style": "secondary"
+      }
+    },
+    "main": {
+      "type": "page",
+      "settings": {}
+    },
+    "1756999860fd50533e": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_video_slider_rdF4PP": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-video-slider/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "show-by-tag": false,
+            "layout": "spotlight",
+            "shadow": "basic",
+            "show-rating": true,
+            "show-reviewer-name": true,
+            "hide-arrows-mobile": true,
+            "auto-play": true,
+            "show-border": true,
+            "border-width": 1,
+            "border-radius": 16,
+            "text-color": "",
+            "rating-icon-color": "",
+            "border-color": "",
+            "play-button-color": "",
+            "shadow-color": "",
+            "product-id": ""
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_video_slider_rdF4PP"
+      ],
+      "settings": {
+        "include_padding": true
+      }
+    }
+  },
+  "order": [
+    "pxs_image_with_text_overlay_anGzAE",
+    "dynamic_highlights_banner_cqFzWF",
+    "dynamic_collection_list_YA3FG8",
+    "main",
+    "1756999860fd50533e"
+  ]
+}

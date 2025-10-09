@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "17564319265ecf7975": {
+      "type": "_blocks",
+      "settings": {}
+    },
+    "footer": {
+      "type": "static-footer",
+      "blocks": {
+        "rich_text_iAh4NV": {
+          "type": "rich_text",
+          "settings": {
+            "title": "Contact Us",
+            "text": "<p><a href=\"mailto:info@bongs.ca\" title=\"mailto:info@bongs.ca\">info@bongs.ca</a></p><p><a href=\"https://bongs.ca/pages/contact-us/\" title=\"https://bongs.ca/pages/contact-us/\">Contact Form</a></p><p>(365) 675-2228</p><p><a href=\"https://bongs.ca/pages/frequently-asked-questions\" title=\"https://bongs.ca/pages/frequently-asked-questions\">Frequently Asked Questions</a></p><p></p><p></p>"
+          }
+        },
+        "social_accounts": {
+          "type": "social_accounts",
+          "settings": {}
+        },
+        "menu": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu"
+          }
+        },
+        "menu_g8fLxg": {
+          "type": "menu",
+          "settings": {
+            "menu": "our-company"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe",
+            "text": "<p>Join our newsletter for our latest promos and sales!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_iAh4NV",
+        "social_accounts",
+        "menu",
+        "menu_g8fLxg",
+        "newsletter"
+      ],
+      "settings": {
+        "show_follow_on_shop": true,
+        "payment_icons": true,
+        "show_locale_selector": true,
+        "show_currency_selector": true,
+        "additional_menu": "footer"
+      }
+    }
+  },
+  "order": [
+    "17564319265ecf7975",
+    "footer"
+  ]
+}
