@@ -56,9 +56,10 @@
       <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
     {% endif %}
 
+    {% comment %} Canonical tag - uses Shopify's canonical_url for proper locale handling {% endcomment %}
     {% if template contains 'collection' and current_tags %}
       <meta name="robots" content="noindex" />
-      <link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+      <link rel="canonical" href="{{ collection.url | prepend: request.locale.root_url }}" />
     {% else %}
       <link rel="canonical" href="{{ canonical_url }}" />
     {% endif %}
