@@ -117,7 +117,7 @@
   }
 {% endstyle %}
 
-{% render 'breadcrumbs' %}
+{% render 'breadcrumbs', enable_subcollection: section.settings.enable_subcollection %}
 
 {% paginate collection.products by paginate_by %}
   <div class="productgrid--outer {{ collection_classes | strip_newlines }}" data-productgrid-outer>

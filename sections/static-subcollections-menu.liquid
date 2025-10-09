@@ -54,7 +54,7 @@
   data-section-type="static-subcollections-menu"
 >
   {% if section.settings.show_breadcrumbs %}
-    {% render 'breadcrumbs' %}
+    {% render 'breadcrumbs', enable_subcollection: true %}
   {% endif %}
 
   {% 
