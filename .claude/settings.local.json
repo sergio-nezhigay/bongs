@@ -4,7 +4,8 @@
       "WebFetch(domain:bongs.ca)",
       "WebFetch(domain:sillysanta.de)",
       "Bash(claude mcp add playwright:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebSearch"
     ],
     "deny": [],
     "ask": []
