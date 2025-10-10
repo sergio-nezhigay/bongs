@@ -16,6 +16,11 @@
   assign custom_icon_color = section.settings.icon_color
   assign summary_image_id = 'image'
   assign heading_id = 'heading'
+  assign section_classes = ''
+  assign section_attributes = ''
+  assign section_subheading = ''
+  assign wrapper_attributes = ''
+  assign wrapper_classes = ''
 
   if section_width == 'regular'
     assign section_classes = section_classes | append: 'faq--regular'
@@ -104,25 +109,7 @@
 {% endcomment %}
 
 {%- liquid
-  assign category_heading_id = category_heading_id | default: nil
-  assign category_id = category_id | default: nil
-  assign category_image_id = category_image_id | default: nil
-  assign content_id = content_id | default: nil
-  assign custom_icon_color = custom_icon_color | default: 'rgba(0,0,0,0)'
   assign custom_icon_color_alpha = custom_icon_color | color_extract: 'alpha'
-  assign custom_icon_id = custom_icon_id | default: nil
-  assign heading_id = heading_id | default: nil
-  assign icon = icon | default: nil
-  assign section_attributes = section_attributes | default: ''
-  assign section_classes = section_classes | default: ''
-  assign section_heading = section_heading | default: ''
-  assign section_subheading = section_subheading | default: ''
-  assign show_categories = show_categories | default: false
-  assign show_category_card_id = show_category_card_id | default: nil
-  assign summary_id = summary_id | default: nil
-  assign summary_image_id = summary_image_id | default: nil
-  assign wrapper_attributes = wrapper_attributes | default: ''
-  assign wrapper_classes = wrapper_classes | default: ''
 -%}
 
 <script
