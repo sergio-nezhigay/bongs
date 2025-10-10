@@ -34163,7 +34163,9 @@ class StaticCollection {
     this.$advancedTags = this.$el.find('[data-tag-advanced] a');
     this.$additionalTags = this.$el.find('[data-filter-toggle]');
     this.$viewToggle = this.$el.find('[data-collection-view]');
+    console.log('View toggle buttons found:', this.$viewToggle.length, this.$viewToggle);
     this.gridContainer = this.el.querySelector('.productgrid--outer');
+    console.log('Grid container:', this.gridContainer);
     this.$description = this.$el.find('[data-collection-description]');
     this.filterCheckboxes = this.el.querySelectorAll('.filter-icon--checkbox');
     this.stickyUtils = this.el.querySelector('[data-sticky-utils]');
@@ -34181,6 +34183,7 @@ class StaticCollection {
     this._toggleView = this._toggleView.bind(this);
     this._checkListView = this._checkListView.bind(this);
     this.events = [this.$sortTrigger.on('change.collection', this._changeSorting), this.$sortTriggerButton.on('click.collection', this._changeSortingButton), this.$sortTriggerModal.on('click.collection', this._showSortModal), this.$filtersTrigger.on('click.collection', this._showFiltersModal), this.$allTags.on('click.collection', e => this._activateTag(e.currentTarget)), this.$additionalTags.on('click.collection', this._toggleTags), this.$viewToggle.on('click.collection', this._toggleView)];
+    console.log('Event handler attached to view toggle buttons');
     if (this.$description.length) {
       this.richText = new RichText(this.$description);
     }
@@ -34516,39 +34519,71 @@ class StaticCollection {
    *
    */
   _toggleView(event) {
+    event.preventDefault(); // Prevent default link/button behavior
+    console.log('=== _toggleView called ===');
     const $target = jquery_default()(event.currentTarget);
-    Shopify.queryParams.grid_list = $target.data('collection-view');
-    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+    const view = $target.data('collection-view');
+    console.log('Selected view:', view);
+    console.log('Grid container before:', this.gridContainer.className);
+
+    // Save view preference to localStorage
+    localStorage.setItem('collectionView', view);
+    console.log('Saved to localStorage:', localStorage.getItem('collectionView'));
+
+    // Apply the view immediately
+    this.$el.find('.utils-viewtoggle-button').removeClass('active');
+    $target.addClass('active');
+
+    const className = view.replace('-', '');
+    console.log('Class name to add:', `productgrid-${className}`);
+
+    this.gridContainer.classList.remove('productgrid-gridview', 'productgrid-listview');
+    this.gridContainer.classList.add(`productgrid-${className}`);
+
+    console.log('Grid container after:', this.gridContainer.className);
+
+    this.view = view;
+    console.log('Calling _initProductItems with view:', view);
+    this._initProductItems(view);
+    console.log('=== _toggleView complete ===');
   }
 
   /**
-   * Check grid/list view toggle query parameters
+   * Check grid/list view toggle - reads from localStorage
    *
    */
   _checkListView() {
-    const view = Shopify.queryParams.grid_list ? Shopify.queryParams.grid_list : this.defaultView;
-    this.$el.find('[href*="&grid_list"]').attr('href', (i, url) => {
-      let href = url;
-      if (url.indexOf('?') < 0) {
-        const replaceIndex = url.indexOf('&');
-        const firstHalf = url.substr(0, replaceIndex);
-        const secondHalf = url.substr(replaceIndex + 1);
-        href = firstHalf.concat('?', secondHalf);
-      }
-      href = href.replace('grid_list', `grid_list=${view}`);
-      return href;
-    });
+    console.log('=== _checkListView called ===');
+    console.log('Default view from settings:', this.defaultView);
+    console.log('localStorage value:', localStorage.getItem('collectionView'));
+
+    // Read view preference from localStorage, fallback to default
+    const view = localStorage.getItem('collectionView') || this.defaultView;
+    console.log('Final view to apply:', view);
+
+    // Update button states
     this.$el.find('.utils-viewtoggle-button').removeClass('active');
     jquery_default()(`[data-collection-view=${view}]`).addClass('active');
+    console.log('Button state updated for view:', view);
+
+    // Apply CSS classes for the view
     const className = view.replace('-', '');
+    console.log('Class name:', className);
+    console.log('Grid container before:', this.gridContainer.className);
+
     this.gridContainer.classList.add(`productgrid-${className}`);
     if (className === 'listview') {
       this.gridContainer.classList.remove('productgrid-gridview');
     } else {
       this.gridContainer.classList.remove('productgrid-listview');
     }
+
+    console.log('Grid container after:', this.gridContainer.className);
+
     this.view = view;
+    console.log('Calling _initProductItems with view:', view);
     this._initProductItems(view);
+    console.log('=== _checkListView complete ===');
   }
   _initTags() {
     const inactiveTags = this.$filtersContent[0].querySelectorAll('[data-filter-active="false"]');
@@ -42473,10 +42508,31 @@ class FacetedFilterCollection extends StaticCollection {
    *
    */
   _toggleView(event) {
-    const target = event.currentTarget;
-    const url = new URL(window.location);
-    url.searchParams.set('grid_list', target.dataset.collectionView);
-    window.location.search = url.search;
+    event.preventDefault(); // Prevent default link/button behavior
+    event.stopPropagation(); // Stop event from bubbling
+    console.log('=== FacetedFilter _toggleView called ===');
+    const $target = jquery_default()(event.currentTarget);
+    const view = $target.data('collection-view');
+    console.log('Selected view:', view);
+
+    // Save view preference to localStorage
+    localStorage.setItem('collectionView', view);
+    console.log('Saved to localStorage:', localStorage.getItem('collectionView'));
+
+    // Apply the view immediately
+    this.$el.find('.utils-viewtoggle-button').removeClass('active');
+    $target.addClass('active');
+
+    const className = view.replace('-', '');
+    this.gridContainer.classList.remove('productgrid-gridview', 'productgrid-listview');
+    this.gridContainer.classList.add(`productgrid-${className}`);
+
+    console.log('Grid container after:', this.gridContainer.className);
+
+    this.view = view;
+    this._initProductItems(view);
+
+    return false; // Extra safety
   }
 
   /**

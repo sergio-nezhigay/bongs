@@ -1,5 +1,3 @@
-{% assign grid_list = grid_list | default: nil %}
-
 {% if paginate.previous or paginate.next %}
   <nav class="pagination--container" aria-label="Pagination">
     <ul class="pagination--inner">
@@ -8,7 +6,7 @@
         <li class="pagination--previous">
           <a
             class="pagination--item"
-            href="{{- paginate.previous.url -}}{%- if grid_list -%}&grid_list{%- endif -%}"
+            href="{{- paginate.previous.url -}}"
             aria-label="Go to previous page"
           >
             <span class="pagination--chevron-left" aria-hidden="true">
@@ -25,7 +23,7 @@
           <li>
             <a
               class="pagination--item"
-              href="{{ part.url }}{% if grid_list %}&grid_list{% endif %}"
+              href="{{ part.url }}"
               aria-label="Go to page {{ part.title }}"
             >
               {{ part.title }}
@@ -55,7 +53,7 @@
         <li class="pagination--next">
           <a
             class="pagination--item"
-            href="{{- paginate.next.url -}}{%- if grid_list -%}&grid_list{%- endif -%}"
+            href="{{- paginate.next.url -}}"
             aria-label="Go to next page"
           >
             {{ 'general.pagination.next' | t }}
