@@ -55,9 +55,40 @@
       <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
     {% endif %}
 
-    {% comment %} Canonical tag - uses Shopify's canonical_url for proper locale handling {% endcomment %}
+    {% comment %} Meta robots and canonical tags {% endcomment %}
+    {% liquid
+      assign should_noindex = false
+
+      # Check for pagination
+      if current_page > 1
+        assign should_noindex = true
+      endif
+
+      # Check for active filters (faceted filters)
+      if template contains 'collection' and collection.filters
+        assign has_active_filters = false
+        for filter in collection.filters
+          if filter.active_values.size > 0 or filter.min_value.value or filter.max_value.value
+            assign has_active_filters = true
+            break
+          endif
+        endfor
+        if has_active_filters
+          assign should_noindex = true
+        endif
+      endif
+
+      # Check for tagged collections
+      if template contains 'collection' and current_tags.size > 0
+        assign should_noindex = true
+      endif
+    %}
+
+    {% if should_noindex %}
+      <meta name="robots" content="noindex, follow" />
+    {% endif %}
+
     {% if template contains 'collection' and current_tags %}
-      <meta name="robots" content="noindex" />
       <link rel="canonical" href="{{ collection.url | prepend: request.locale.root_url }}" />
     {% else %}
       <link rel="canonical" href="{{ canonical_url }}" />
