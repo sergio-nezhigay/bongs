@@ -7,7 +7,9 @@
       "Bash(npm run dev:*)",
       "WebSearch",
       "mcp__ide__getDiagnostics",
-      "Bash(curl -s http://127.0.0.1:9292/collections/grinder)"
+      "Bash(curl -s http://127.0.0.1:9292/collections/grinder)",
+      "Bash(git checkout:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []
