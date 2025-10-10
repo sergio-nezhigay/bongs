@@ -5,7 +5,8 @@
       "WebFetch(domain:sillysanta.de)",
       "Bash(claude mcp add playwright:*)",
       "Bash(npm run dev:*)",
-      "WebSearch"
+      "WebSearch",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [],
     "ask": []

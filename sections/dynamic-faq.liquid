@@ -196,6 +196,40 @@
 </section>
 {% comment %}Inject @pixelunion/pxs-faq/faq end{% endcomment %}
 
+{% comment %}
+  FAQPage structured data
+  https://developers.google.com/search/docs/data-types/faqpage
+{% endcomment %}
+
+{%- assign faq_questions_count = 0 -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'question' and block.settings.question != blank and block.settings.answer != blank -%}
+    {%- assign faq_questions_count = faq_questions_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if faq_questions_count > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'question' and block.settings.question != blank and block.settings.answer != blank -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
 
 {% schema %}
 {

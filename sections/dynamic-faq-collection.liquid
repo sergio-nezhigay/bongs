@@ -162,6 +162,41 @@
   </div>
 </section>
 
+{% comment %}
+  FAQPage structured data
+  https://developers.google.com/search/docs/data-types/faqpage
+{% endcomment %}
+
+{%- assign faq_items_count = 0 -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'faq_item' and block.settings.question != blank and block.settings.answer != blank -%}
+    {%- assign faq_items_count = faq_items_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if faq_items_count > 0 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' and block.settings.question != blank and block.settings.answer != blank -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | strip_html | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+  }
+  </script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "FAQ Collection",
