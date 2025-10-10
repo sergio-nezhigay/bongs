@@ -6,7 +6,8 @@
       "Bash(claude mcp add playwright:*)",
       "Bash(npm run dev:*)",
       "WebSearch",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(curl -s http://127.0.0.1:9292/collections/grinder)"
     ],
     "deny": [],
     "ask": []
