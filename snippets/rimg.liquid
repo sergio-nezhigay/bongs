@@ -61,6 +61,15 @@
       of the container if the image is a background-image and `object-fit:cover;object-position:[focal point]`
       otherwise on the image element.
       Defaults to blank.
+
+    @param responsive (optional)
+      Generate width-based srcset with sizes attribute for responsive images based on viewport width.
+      If true, generates multiple image widths and a sizes attribute.
+      Defaults to false.
+
+    @param sizes_attr (optional)
+      Custom sizes attribute value for responsive images. Only used if responsive is true.
+      Defaults to auto-generated based on common breakpoints.
   {% endcomment %}
 
   {% comment %}
@@ -81,6 +90,8 @@
   {% assign canvas = canvas | default: false %}
   {% assign disable_noscript = disable_noscript | default: false %}
   {% assign focal_point = focal_point | default: blank %}
+  {% assign responsive = responsive | default: false %}
+  {% assign sizes_attr = sizes_attr | default: blank %}
   {% comment %}
     Parse size parameter and force to numbers.
   {% endcomment %}
@@ -275,6 +286,42 @@
   {% endfor %}
   {% assign rimg_density_srcset = rimg_density_srcset | remove_first: ', ' %}
 
+  {% comment %}
+    Generate width-based srcset for responsive images if enabled
+  {% endcomment %}
+  {% if responsive %}
+    {% assign rimg_responsive_srcset = '' %}
+    {% assign rimg_widths = '400,600,800,1000,1200,1400,1600,1800,2000' | split: ',' %}
+
+    {% for width_str in rimg_widths %}
+      {% assign width = width_str | times: 1 %}
+      {% if width <= img.width %}
+        {% assign responsive_h = width | divided_by: img.aspect_ratio | ceil %}
+        {% assign responsive_size = width | append: 'x' | append: responsive_h %}
+
+        {% if rimg_format == '' %}
+          {% assign responsive_src = img | image_url: width: width, crop: crop %}
+        {% else %}
+          {% assign responsive_src = img | image_url: width: width, crop: crop, format: rimg_format %}
+        {% endif %}
+
+        {% assign rimg_responsive_srcset = rimg_responsive_srcset
+          | append: ', '
+          | append: responsive_src
+          | append: ' '
+          | append: width
+          | append: 'w'
+        %}
+      {% endif %}
+    {% endfor %}
+    {% assign rimg_responsive_srcset = rimg_responsive_srcset | remove_first: ', ' %}
+
+    {% comment %} Generate sizes attribute if not provided {% endcomment %}
+    {% if sizes_attr == blank %}
+      {% assign sizes_attr = '(max-width: 719px) 100vw, (max-width: 1023px) 51.5vw, 35vw' %}
+    {% endif %}
+  {% endif %}
+
 {%- endcapture -%}
 
 {% comment %} Background image {% endcomment %}
@@ -318,7 +365,12 @@
 
         alt="{{ rimg_alt }}"
         data-rimg="noscript"
-        srcset="{{ rimg_density_srcset }}"
+        {% if responsive %}
+          srcset="{{ rimg_responsive_srcset }}"
+          sizes="{{ sizes_attr }}"
+        {% else %}
+          srcset="{{ rimg_density_srcset }}"
+        {% endif %}
         {% if class != blank %}class="{{ class }}"{% endif %}
         {% if style != blank %}style="{{ style }}"{% endif %}
         {% if attr != blank %}{{ attr }}{% endif %}
@@ -344,7 +396,12 @@
       srcset="{{ rimg_placeholder }}"
     {% else %}
       data-rimg
-      srcset="{{ rimg_density_srcset }}"
+      {% if responsive %}
+        srcset="{{ rimg_responsive_srcset }}"
+        sizes="{{ sizes_attr }}"
+      {% else %}
+        srcset="{{ rimg_density_srcset }}"
+      {% endif %}
     {% endif %}
 
     {% if class != blank %}class="{{ class }}"{% endif %}
@@ -375,6 +432,8 @@
   {% assign canvas = nil %}
   {% assign disable_noscript = nil %}
   {% assign focal_point = nil %}
+  {% assign responsive = nil %}
+  {% assign sizes_attr = nil %}
   {% comment %}
     Unset all local variables so they don't pollute the global scope.
   {% endcomment %}
@@ -394,4 +453,6 @@
   {% assign rimg_densities_size = blank %}
   {% assign rimg_density_srcset = blank %}
   {% assign rimg_placeholder = blank %}
+  {% assign rimg_responsive_srcset = blank %}
+  {% assign rimg_widths = blank %}
 {%- endcapture -%}

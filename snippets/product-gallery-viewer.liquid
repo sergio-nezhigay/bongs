@@ -125,11 +125,12 @@
           {%
             render 'rimg',
             img: media,
-            class: 'product-gallery--loaded-image'
+            class: 'product-gallery--loaded-image',
             size: 'x700',
             lazy: lazy_load,
             canvas: false,
             attr: fetch_priority,
+            responsive: true,
           %}
         </div>
       {% when 'external_video' %}
