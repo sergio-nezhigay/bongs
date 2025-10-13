@@ -10,7 +10,11 @@
       "Bash(curl -s http://127.0.0.1:9292/collections/grinder)",
       "Bash(git checkout:*)",
       "Bash(rm:*)",
-      "Bash(npm run push:*)"
+      "Bash(npm run push:*)",
+      "Bash(curl -s \"http://127.0.0.1:9292/collections/grinder?sort_by=best-selling\")",
+      "Bash(curl -s \"http://127.0.0.1:9292/collections/grinder?page=2\")",
+      "Bash(curl -s \"http://127.0.0.1:9292/collections/grinder?filter.p.vendor=Cheech\")",
+      "WebFetch(domain:shopify.dev)"
     ],
     "deny": [],
     "ask": []
