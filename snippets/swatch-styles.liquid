@@ -108,14 +108,16 @@
       {% endif %}
     {% endfor %}
   {%- else -%}
-    {% comment %} Then look for a pattern image. {% endcomment %}
-    {% assign swatch_file_name = color_name | downcase | handleize | append: '.png' %}
-    {%- if images[swatch_file_name] != blank -%}
-      {%- capture swatch_image_resolution -%}{{ swatch_size | times: 2 }}x{{ swatch_size | times: 2 }}{%- endcapture -%}
-      {%- assign swatch_file_url = swatch_file_name | file_img_url: swatch_image_resolution, crop: 'center' -%}
-      {%- capture swatch_bg_image -%}
-        background-image: url('{{- swatch_file_url  -}}');
-      {%- endcapture -%}
+    {% comment %} Then look for a pattern image (only if custom color not found). {% endcomment %}
+    {%- if swatch_bg_color == blank -%}
+      {% assign swatch_file_name = color_name | downcase | handleize | append: '.png' %}
+      {%- if images[swatch_file_name] != blank -%}
+        {%- capture swatch_image_resolution -%}{{ swatch_size | times: 2 }}x{{ swatch_size | times: 2 }}{%- endcapture -%}
+        {%- assign swatch_file_url = swatch_file_name | file_img_url: swatch_image_resolution, crop: 'center' -%}
+        {%- capture swatch_bg_image -%}
+          background-image: url('{{- swatch_file_url  -}}');
+        {%- endcapture -%}
+      {%- endif -%}
     {%- endif -%}
   {%- endif -%}
 
