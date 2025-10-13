@@ -96,6 +96,19 @@
     >
       {% case media.media_type %}
       {% when 'image' %}
+        {% comment %} Only eagerly load the selected/first image, lazy load others {% endcomment %}
+        {% assign is_selected = false %}
+        {% if selected_media.id == media.id %}
+          {% assign is_selected = true %}
+        {% endif %}
+
+        {% assign lazy_load = true %}
+        {% assign fetch_priority = '' %}
+        {% if is_selected %}
+          {% assign lazy_load = false %}
+          {% assign fetch_priority = 'fetchpriority="high"' %}
+        {% endif %}
+
         <div
           class="product-gallery--image-background"
           {% if image_crop %}
@@ -103,8 +116,8 @@
               render 'rimg',
               img: media,
               size: 'x700',
-              lazy: false,
-              attr: 'fetchpriority="high"',
+              lazy: lazy_load,
+              attr: fetch_priority,
               background: true
             %}
           {% endif %}
@@ -114,9 +127,9 @@
             img: media,
             class: 'product-gallery--loaded-image'
             size: 'x700',
-            lazy: false,
+            lazy: lazy_load,
             canvas: false,
-            attr: 'fetchpriority="high"',
+            attr: fetch_priority,
           %}
         </div>
       {% when 'external_video' %}
