@@ -28,7 +28,9 @@
           }
         }
       },
-      "block_order": ["filter-1"],
+      "block_order": [
+        "filter-1"
+      ],
       "settings": {
         "show_collection_image": false,
         "products_per_page_range": 24,
@@ -58,14 +60,14 @@
     "dynamic_collection_description": {
       "type": "dynamic-collection-description",
       "settings": {
-        "width": "regular",
+        "width": "wide",
         "title": "",
         "use_collection_description": true,
         "text": "",
         "heading_size": "medium",
         "text_alignment": "left",
         "enable_read_more": true,
-        "collapsed_height": 150,
+        "collapsed_height": 180,
         "read_more_text": "Mehr anzeigen",
         "read_less_text": "Weniger anzeigen"
       }
