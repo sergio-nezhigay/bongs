@@ -290,6 +290,7 @@
     Generate width-based srcset for responsive images if enabled
   {% endcomment %}
   {% if responsive %}
+    <!-- DEBUG: Responsive mode enabled -->
     {% assign rimg_responsive_srcset = '' %}
     {% assign rimg_widths = '400,600,800,1000,1200,1400,1600,1800,2000' | split: ',' %}
 
@@ -320,6 +321,9 @@
     {% if sizes_attr == blank %}
       {% assign sizes_attr = '(max-width: 719px) 100vw, (max-width: 1023px) 51.5vw, 35vw' %}
     {% endif %}
+    <!-- DEBUG: sizes="{{ sizes_attr }}" srcset="{{ rimg_responsive_srcset }}" -->
+  {% else %}
+    <!-- DEBUG: Responsive mode DISABLED, using density srcset -->
   {% endif %}
 
 {%- endcapture -%}
@@ -394,13 +398,18 @@
       data-rimg-crop="{{ crop }}"
       {% if placeholder %}data-rimg-placeholder="{{ placeholder }}"{% endif %}
       srcset="{{ rimg_placeholder }}"
+      data-debug-lazy="true"
+      {% if responsive %}data-debug-responsive="true"{% endif %}
     {% else %}
       data-rimg
+      data-debug-lazy="false"
       {% if responsive %}
         srcset="{{ rimg_responsive_srcset }}"
         sizes="{{ sizes_attr }}"
+        data-debug-responsive="true"
       {% else %}
         srcset="{{ rimg_density_srcset }}"
+        data-debug-responsive="false"
       {% endif %}
     {% endif %}
 

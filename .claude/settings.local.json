@@ -19,7 +19,8 @@
       "Bash(curl -s http://127.0.0.1:9292/products/medicali-grinder)",
       "Bash(curl -s \"http://127.0.0.1:9292/\")",
       "Bash(curl -s \"http://127.0.0.1:9292/products/medical-grinder\")",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []
