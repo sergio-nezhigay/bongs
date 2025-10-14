@@ -68,8 +68,12 @@
         "text_alignment": "left",
         "enable_read_more": true,
         "collapsed_height": 180,
-        "read_more_text": "Mehr anzeigen",
-        "read_less_text": "Weniger anzeigen"
+        "read_more_text": "Read more",
+        "read_less_text": "Read less",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "dynamic_faq_collection_new": {
@@ -120,7 +124,9 @@
       ],
       "settings": {
         "heading": "FAQ",
-        "section_width": "regular"
+        "section_width": "regular",
+        "padding_top": 20,
+        "padding_bottom": 50
       }
     }
   },
