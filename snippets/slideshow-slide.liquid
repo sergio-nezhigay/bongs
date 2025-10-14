@@ -136,6 +136,8 @@
           lazy: lazyload,
           canvas: lazyload,
           focal_point: block_slide_image.presentation.focal_point,
+          responsive: true,
+          sizes_attr: '100vw',
         %}
       {%- else -%}
         {{ placeholder |  placeholder_svg_tag: 'slideshow-slide__image slideshow-slide__placeholder' }}
@@ -150,6 +152,8 @@
           lazy: lazyload,
           canvas: lazyload,
           focal_point: block_slide_image_mobile.presentation.focal_point,
+          responsive: true,
+          sizes_attr: '100vw',
         %}
       {%- endif -%}
 
