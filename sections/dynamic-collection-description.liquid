@@ -1,0 +1,333 @@
+<script
+  type="application/json"
+  data-section-id="{{ section.id }}"
+  data-section-type="dynamic-collection-description"
+></script>
+
+<script type="application/pxs-animation-mapping+json">
+  {
+    "blocks": [".collection-description-block"],
+    "elements": []
+  }
+</script>
+
+<section
+  class="
+    collection-description
+    collection-description--{{ section.settings.width }}
+  "
+  data-collection-description
+>
+  <div
+    class="
+      collection-description-block
+      collection-description-alignment-{{ section.settings.text_alignment }}
+    "
+    {{ section.shopify_attributes }}
+  >
+    {%- if section.settings.title != blank -%}
+      <h2
+        class="
+          collection-description-heading
+          collection-description-heading-{{ section.settings.heading_size }}
+        "
+      >
+        {{- section.settings.title | escape -}}
+      </h2>
+    {%- endif -%}
+
+    {%- assign description_content = section.settings.text -%}
+    {%- if section.settings.use_collection_description -%}
+      {%- assign description_content = collection.description -%}
+    {%- endif -%}
+
+    {%- if description_content != blank -%}
+      <div class="collection-description-wrapper">
+        <div class="collection-description-content rte" data-rte data-description-content>
+          {{- description_content -}}
+        </div>
+        {%- if section.settings.enable_read_more -%}
+          <button
+            type="button"
+            class="collection-description-toggle"
+            data-read-more-toggle
+            aria-expanded="false"
+          >
+            <span class="toggle-text" data-toggle-text>{{ section.settings.read_more_text }}</span>
+          </button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .collection-description {
+    padding: 40px 20px;
+  }
+
+  .collection-description--regular {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .collection-description--wide {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .collection-description--full-width {
+    max-width: 100%;
+  }
+
+  .collection-description-block {
+    position: relative;
+  }
+
+  .collection-description-alignment-left {
+    text-align: left;
+  }
+
+  .collection-description-alignment-center {
+    text-align: center;
+  }
+
+  .collection-description-alignment-right {
+    text-align: right;
+  }
+
+  .collection-description-heading {
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .collection-description-heading-small {
+    font-size: 24px;
+  }
+
+  .collection-description-heading-medium {
+    font-size: 32px;
+  }
+
+  .collection-description-heading-large {
+    font-size: 40px;
+  }
+
+  .collection-description-wrapper {
+    position: relative;
+    border: 2px solid #e8e8e8;
+    padding: 30px;
+    background: #fff;
+  }
+
+  .collection-description-content {
+    max-height: {{ section.settings.collapsed_height }}px;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    line-height: 1.6;
+    opacity: 1;
+  }
+
+  .collection-description-content p {
+    margin-bottom: 1em;
+  }
+
+  .collection-description-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  .collection-description-wrapper.is-expanded .collection-description-content {
+    max-height: 5000px;
+    transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  .collection-description-toggle {
+    display: inline-block;
+    margin-top: 15px;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .collection-description-toggle:hover {
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 768px) {
+    .collection-description {
+      padding: 30px 15px;
+    }
+
+    .collection-description-wrapper {
+      padding: 20px;
+    }
+
+    .collection-description-heading-small {
+      font-size: 20px;
+    }
+
+    .collection-description-heading-medium {
+      font-size: 26px;
+    }
+
+    .collection-description-heading-large {
+      font-size: 32px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const section = document.querySelector('[data-collection-description]');
+    if (!section) return;
+
+    const toggle = section.querySelector('[data-read-more-toggle]');
+    const wrapper = section.querySelector('.collection-description-wrapper');
+    const toggleText = section.querySelector('[data-toggle-text]');
+
+    if (!toggle || !wrapper || !toggleText) return;
+
+    const readMoreText = '{{ section.settings.read_more_text }}';
+    const readLessText = '{{ section.settings.read_less_text }}';
+
+    toggle.addEventListener('click', function () {
+      const isExpanded = wrapper.classList.contains('is-expanded');
+
+      if (isExpanded) {
+        wrapper.classList.remove('is-expanded');
+        toggleText.textContent = readMoreText;
+        toggle.setAttribute('aria-expanded', 'false');
+
+        // Scroll to top of section after closing
+        setTimeout(function() {
+          const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+          const offset = 100; // Offset from top for comfortable viewing
+
+          window.scrollTo({
+            top: sectionTop - offset,
+            behavior: 'smooth'
+          });
+        }, 100); // Small delay to let animation start
+      } else {
+        wrapper.classList.add('is-expanded');
+        toggleText.textContent = readLessText;
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection Description",
+  "class": "collection-description--section",
+  "settings": [
+    {
+      "id": "width",
+      "type": "select",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "wide",
+          "label": "Wide"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_collection_description",
+      "label": "Use collection description",
+      "default": true,
+      "info": "Use the collection's description. If unchecked, use custom text below."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Custom text",
+      "default": "<p>Custom description text goes here.</p>",
+      "info": "Only used if 'Use collection description' is unchecked"
+    },
+    {
+      "id": "heading_size",
+      "type": "select",
+      "label": "Heading size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "id": "text_alignment",
+      "type": "text_alignment",
+      "label": "Text alignment",
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_read_more",
+      "label": "Enable read more/less",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "collapsed_height",
+      "min": 50,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Collapsed height",
+      "default": 150,
+      "info": "Maximum height before read more is triggered"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Read more text",
+      "default": "Mehr anzeigen"
+    },
+    {
+      "type": "text",
+      "id": "read_less_text",
+      "label": "Read less text",
+      "default": "Weniger anzeigen"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Description",
+      "category": "Collection",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
