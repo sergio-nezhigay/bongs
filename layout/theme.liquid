@@ -58,11 +58,6 @@
     {% liquid
       assign should_noindex = false
 
-      # Check for pagination
-      if current_page > 1
-        assign should_noindex = true
-      endif
-
       # Check for active filters (faceted filters)
       if template contains 'collection' and collection.filters
         assign has_active_filters = false
@@ -95,13 +90,11 @@
     {% liquid
       assign should_use_clean_canonical = false
 
-      # Use clean collection URL for filtered/sorted/paginated pages
+      # Use clean collection URL for filtered/sorted/tagged pages (not pagination)
       if template contains 'collection'
         if current_tags.size > 0
           assign should_use_clean_canonical = true
         elsif collection.sort_by != blank and collection.sort_by != collection.default_sort_by
-          assign should_use_clean_canonical = true
-        elsif current_page > 1
           assign should_use_clean_canonical = true
         elsif collection.filters
           for filter in collection.filters

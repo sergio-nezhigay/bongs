@@ -1,4 +1,12 @@
 {% if paginate.previous or paginate.next %}
+  {% comment %} SEO: Add rel="prev" and rel="next" link tags for pagination {% endcomment %}
+  {% if paginate.previous %}
+    <link rel="prev" href="{{ paginate.previous.url }}">
+  {% endif %}
+  {% if paginate.next %}
+    <link rel="next" href="{{ paginate.next.url }}">
+  {% endif %}
+
   <nav class="pagination--container" aria-label="Pagination">
     <ul class="pagination--inner">
 
