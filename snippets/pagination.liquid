@@ -1,11 +1,13 @@
 {% if paginate.previous or paginate.next %}
-  {% comment %} SEO: Add rel="prev" and rel="next" link tags for pagination {% endcomment %}
+  {% comment %} SEO: Pagination prev/next links (in body for paginate object access) {% endcomment %}
+  {% comment %}theme-check-disable RemoteAsset{% endcomment %}
   {% if paginate.previous %}
     <link rel="prev" href="{{ paginate.previous.url }}">
   {% endif %}
   {% if paginate.next %}
     <link rel="next" href="{{ paginate.next.url }}">
   {% endif %}
+  {% comment %}theme-check-enable RemoteAsset{% endcomment %}
 
   <nav class="pagination--container" aria-label="Pagination">
     <ul class="pagination--inner">
