@@ -132,8 +132,8 @@
     transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Gradient fade effect when collapsed (pixel mode only) */
-  .collection-description-wrapper:not(.paragraph-mode):not(.paragraph-mode-no-collapse) .collection-description-content::after {
+  /* Gradient fade effect when collapsed (both pixel and paragraph modes) */
+  .collection-description-wrapper:not(.is-expanded):not(.paragraph-mode-no-collapse) .collection-description-content::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -148,6 +148,12 @@
 
   .collection-description-wrapper.is-expanded .collection-description-content::after {
     opacity: 0;
+  }
+
+  /* In paragraph mode, ensure content has relative positioning for gradient overlay */
+  .collection-description-wrapper.paragraph-mode .collection-description-content {
+    position: relative;
+    overflow: hidden;
   }
 
   /* Paragraph mode: hide individual paragraphs */
