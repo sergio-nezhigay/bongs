@@ -121,15 +121,19 @@
   }
 
   .collection-description-content {
-    max-height: {{ section.settings.collapsed_height }}px;
-    overflow: hidden;
-    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     line-height: 1.6;
     position: relative;
   }
 
-  /* Gradient fade effect when collapsed */
-  .collection-description-content::after {
+  /* Pixel mode: use max-height collapse */
+  .collection-description-wrapper:not(.paragraph-mode):not(.paragraph-mode-no-collapse) .collection-description-content {
+    max-height: {{ section.settings.collapsed_height }}px;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Gradient fade effect when collapsed (pixel mode only) */
+  .collection-description-wrapper:not(.paragraph-mode):not(.paragraph-mode-no-collapse) .collection-description-content::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -146,6 +150,17 @@
     opacity: 0;
   }
 
+  /* Paragraph mode: hide individual paragraphs */
+  .collection-description-wrapper.paragraph-mode .hidden-paragraph {
+    display: none !important;
+  }
+
+  /* When content is short in paragraph mode, remove any restrictions */
+  .collection-description-wrapper.paragraph-mode-no-collapse .collection-description-content {
+    max-height: none;
+    overflow: visible;
+  }
+
   .collection-description-content p {
     margin-bottom: 1em;
   }
@@ -154,7 +169,8 @@
     margin-bottom: 0;
   }
 
-  .collection-description-wrapper.is-expanded .collection-description-content {
+  /* Pixel mode: expand max-height when expanded */
+  .collection-description-wrapper.is-expanded:not(.paragraph-mode):not(.paragraph-mode-no-collapse) .collection-description-content {
     max-height: 5000px;
     transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -205,12 +221,51 @@
 
     const toggle = section.querySelector('[data-read-more-toggle]');
     const wrapper = section.querySelector('.collection-description-wrapper');
+    const content = section.querySelector('[data-description-content]');
     const toggleText = section.querySelector('[data-toggle-text]');
 
-    if (!toggle || !wrapper || !toggleText) return;
+    if (!wrapper || !content) return;
 
+    const collapseMode = '{{ section.settings.collapse_mode }}';
+    const visibleParagraphs = {{ section.settings.visible_paragraphs }};
     const readMoreText = '{{ section.settings.read_more_text }}';
     const readLessText = '{{ section.settings.read_less_text }}';
+
+    // Handle paragraph-based collapse
+    if (collapseMode === 'paragraphs') {
+      // Get all direct children (blocks) - includes p, h1-h6, ul, ol, div, etc.
+      const blocks = Array.from(content.children);
+      const totalBlocks = blocks.length;
+
+      console.log('Paragraph mode: Total blocks =', totalBlocks, 'Visible limit =', visibleParagraphs);
+
+      // If content has fewer or equal blocks than the limit, show all and hide button
+      if (totalBlocks <= visibleParagraphs) {
+        console.log('Content is short, hiding READ MORE button');
+        if (toggle) {
+          toggle.style.display = 'none';
+        }
+        wrapper.classList.add('paragraph-mode-no-collapse');
+        return;
+      }
+
+      // Hide blocks beyond the visible limit
+      let hiddenCount = 0;
+      blocks.forEach(function (block, index) {
+        if (index >= visibleParagraphs) {
+          block.classList.add('hidden-paragraph');
+          hiddenCount++;
+          console.log('Hiding block', index + ':', block.tagName);
+        }
+      });
+
+      wrapper.classList.add('paragraph-mode');
+      console.log('Added paragraph-mode class to wrapper');
+      console.log('Hidden', hiddenCount, 'blocks (indices', visibleParagraphs, 'to', (totalBlocks - 1) + ')');
+    }
+
+    // Toggle functionality (works for both modes)
+    if (!toggle || !toggleText) return;
 
     toggle.addEventListener('click', function () {
       const isExpanded = wrapper.classList.contains('is-expanded');
@@ -219,6 +274,16 @@
         wrapper.classList.remove('is-expanded');
         toggleText.textContent = readMoreText;
         toggle.setAttribute('aria-expanded', 'false');
+
+        // In paragraph mode, hide blocks again
+        if (collapseMode === 'paragraphs') {
+          const blocks = Array.from(content.children);
+          blocks.forEach(function (block, index) {
+            if (index >= visibleParagraphs) {
+              block.classList.add('hidden-paragraph');
+            }
+          });
+        }
 
         // Scroll to top of section after closing
         setTimeout(function() {
@@ -234,6 +299,14 @@
         wrapper.classList.add('is-expanded');
         toggleText.textContent = readLessText;
         toggle.setAttribute('aria-expanded', 'true');
+
+        // In paragraph mode, show all blocks
+        if (collapseMode === 'paragraphs') {
+          const blocks = Array.from(content.children);
+          blocks.forEach(function (block) {
+            block.classList.remove('hidden-paragraph');
+          });
+        }
       }
     });
   })();
@@ -316,6 +389,33 @@
       "default": true
     },
     {
+      "id": "collapse_mode",
+      "type": "select",
+      "label": "Collapse mode",
+      "options": [
+        {
+          "value": "pixels",
+          "label": "By height (pixels)"
+        },
+        {
+          "value": "paragraphs",
+          "label": "By paragraphs"
+        }
+      ],
+      "default": "paragraphs",
+      "info": "Choose how to limit visible content"
+    },
+    {
+      "type": "range",
+      "id": "visible_paragraphs",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Visible blocks",
+      "default": 2,
+      "info": "Number of content blocks (paragraphs, headings, lists) to show before 'Read more' (only for paragraph mode)"
+    },
+    {
       "type": "range",
       "id": "collapsed_height",
       "min": 50,
@@ -324,7 +424,7 @@
       "unit": "px",
       "label": "Collapsed height",
       "default": 150,
-      "info": "Maximum height before read more is triggered"
+      "info": "Maximum height before read more is triggered (only for pixel mode)"
     },
     {
       "type": "text",
